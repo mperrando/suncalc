@@ -44,6 +44,14 @@ t.test('getTimes returns sun phases for the given date and location', function (
     t.end();
 });
 
+t.test('getTimes returns sun phases for the problematic date and location', function (t) {
+
+    var times = SunCalc.getTimes(new Date('2017-07-15UTC'), lat, lng);
+
+    t.equal(new Date('2017-07-15').toUTCString(), times.night.toUTCString(), "night");
+    t.end();
+});
+
 t.test('getMoonPosition returns moon position data given time and location', function (t) {
     var moonPos = SunCalc.getMoonPosition(date, lat, lng);
 
